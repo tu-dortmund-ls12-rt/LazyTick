@@ -1,0 +1,8 @@
+idf_component_register(SRCS "main.c" "taskDescriptions.c" INCLUDE_DIRS "." REQUIRES driver esp_psram esp_timer)
+idf_build_set_property(COMPILE_OPTIONS "-DLOG_LOCAL_LEVEL=ESP_LOG_INFO" APPEND)
+idf_build_set_property(COMPILE_OPTIONS "-DTASK_IT=1" APPEND)
+idf_build_set_property(COMPILE_OPTIONS "-DNUM_TICKS=1000" APPEND)
+idf_build_set_property(COMPILE_OPTIONS "-DDEADLINE_TEST=1" APPEND)
+# idf_build_set_property(COMPILE_OPTIONS "-DSYSTICK_DISABLED" APPEND)
+# idf_build_set_property(COMPILE_OPTIONS "-DONESHOT" APPEND)
+idf_build_set_property(COMPILE_OPTIONS "-DENERGY_TEST" APPEND)

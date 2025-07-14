@@ -1,0 +1,21 @@
+src/intr_alloc.c
+src/xtensa_vectors.S
+src/freertos/app_startup.c
+src/freertos/FreeRTOS-Kernel/include/freertos/lazytick.h
+src/freertos/FreeRTOS-Kernel/include/freertos/FreeRTOS.h
+src/freertos/FreeRTOS-Kernel/include/freertos/task_additions.h
+src/freertos/FreeRTOS-Kernel/include/freertos/taskDescriptions.h
+src/freertos/FreeRTOS-Kernel/portable/xtensa/port.c
+src/freertos/FreeRTOS-Kernel/portable/xtensa/portasm.S
+src/freertos/FreeRTOS-Kernel/tasks.c
+src/freertos/CMakeLists.txt
+# period add:
+src/freertos/config/include/freertos/FreeRTOSConfig.h
+src/freertos/esp_additions/include/freertos/idf_additions.h
+src/freertos/esp_additions/include/esp_private/freertos_idf_additions_priv.h
+src/freertos/esp_additions/freertos_tasks_c_additions.h
+src/freertos/esp_additions/idf_additions.c
+src/freertos/FreeRTOS-Kernel/include/freertos/task.h
+src/freertos/FreeRTOS-Kernel/timers.c
+esp-idf/components/pthread/pthread.c
+esp-idf/components/esp_timer/src/esp_timer.c

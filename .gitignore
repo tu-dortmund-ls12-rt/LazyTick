@@ -1,0 +1,11 @@
+esp-idf
+build
+logs-*
+td-*
+.venv
+.DS_Store
+__pycache__
+logs
+results-split
+sdkconfig.old
+.vscode
