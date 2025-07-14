@@ -20,3 +20,11 @@ ln -s $thispath/src/xtensa_vectors.S $thispath/esp-idf/components/xtensa/xtensa_
 cp $thispath/esp-idf/components/esp_hw_support/intr_alloc.c $thispath/src/intr_alloc.c && \
 rm $thispath/esp-idf/components/esp_hw_support/intr_alloc.c && \
 ln -s $thispath/src/intr_alloc.c $thispath/esp-idf/components/esp_hw_support/intr_alloc.c
+
+cp $thispath/esp-idf/components/pthread/pthread.c $thispath/src/pthread.c && \
+rm $thispath/esp-idf/components/pthread/pthread.c && \
+ln -s $thispath/src/pthread.c $thispath/esp-idf/components/pthread/pthread.c
+
+cp $thispath/esp-idf/components/esp_timer/src/esp_timer.c $thispath/src/esp_timer.c && \
+rm $thispath/esp-idf/components/esp_timer/src/esp_timer.c && \
+ln -s $thispath/src/esp_timer.c $thispath/esp-idf/components/esp_timer/src/esp_timer.c
