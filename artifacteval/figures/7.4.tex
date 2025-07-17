@@ -1,0 +1,116 @@
+\documentclass[varwidth]{standalone}
+\usepackage{siunitx}
+\usepackage{subcaption}
+
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+\usetikzlibrary{positioning,chains,arrows,arrows.meta,shadows,fadings,shapes,backgrounds,matrix,patterns,plotmarks,trees,mindmap,automata,fit,calc,decorations.text}
+
+\pgfplotsset{compat=1.18,
+table/search path={./results/},
+    centered top legend/.style={
+            legend style={
+                    at={(0.5,1.2)},
+                    anchor=north,
+                    legend columns=3,
+                    fill=white,
+                    align=left,
+                    font=\footnotesize,
+                    minimum height=.42cm
+                }
+        },
+        /pgfplots/layers/stacklayers/.define layer set={
+        axis background,axis grid,main,axis ticks,axis lines,axis tick labels,
+        axis descriptions,axis foreground
+    }{/pgfplots/layers/standard},
+        hidden style/.style={
+            hide axis,
+            ybar stacked,
+            bar width=4pt,
+            ymin=0,
+            ymax=100000000,
+            axis x line*=bottom,
+            axis y line*=none,
+            width=\linewidth,
+            height=5cm,
+            xticklabels={},
+            set layers=stacklayers
+        },
+        visible style/.style={
+            ybar stacked,
+            bar width=4pt,
+            ymin=0,
+            ymax=100000000,
+            width=\linewidth,
+            height=5cm,
+            ymajorgrids=true,
+            yminorgrids=true,
+            xminorgrids=false,
+            xmajorgrids=true,
+            set layers=stacklayers,
+            xlabel={Number of tasks},
+            ylabel={Combined runtime},
+        },
+}
+\definecolor{safe0}{RGB}{217,95,2}
+\definecolor{safe2}{RGB}{27,158,119}
+\definecolor{safe1}{RGB}{117,112,179}
+
+\begin{document}
+\begin{figure}
+    \begin{subfigure}{.49\textwidth}%
+        \begin{tikzpicture}
+        \begin{axis}[
+                    xlabel={Number of timers},
+                    ylabel={Completion rate},
+                    ymajorgrids=true,
+                    yminorgrids=true,
+                    xminorgrids=false,
+                    xmajorgrids=true,
+                    legend style={
+                            at={(1.15,1.3)},
+                            anchor=north,
+                            legend columns=3,
+                            fill=white,
+                            align=left,
+                            font=\footnotesize,
+                            minimum height=.42cm
+                        },
+                    width=\textwidth*0.9,
+                    height=150px,
+                    xtick=data,
+                    yticklabel={\pgfmathparse{\tick*100}\pgfmathprintnumber{\pgfmathresult}\%},table/search path={./miqcp-runtime/},
+                ]
+                \addplot[safe0,mark=square,thick] table [y={success_rate}, x={num_timers},col sep=comma]{generic-runtime.csv};
+                \addlegendentry{Non-harmonic task sets};
+                \addplot[safe1,mark=triangle,thick] table [y={success_rate}, x={num_timers},col sep=comma]{harmonic-runtime.csv};
+                \addlegendentry{Harmonic task sets};
+
+            \end{axis}
+        \end{tikzpicture}
+        \subcaption{Completion rate\label{fig:miqcp-successrate}}
+    \end{subfigure}%
+    \begin{subfigure}{.49\textwidth}%
+        \begin{tikzpicture}
+            \begin{axis}[
+                    xlabel={Number of timers},
+                    ylabel={Runtime [s]},
+                    ymajorgrids=true,
+                    yminorgrids=true,
+                    xminorgrids=false,
+                    xmajorgrids=true,
+                    width=\textwidth*0.9,
+                    height=150px,
+                    xtick=data,table/search path={./miqcp-runtime/},
+                ]
+                \addplot[safe0,mark=square,thick] table [y={mean_runtime}, x={num_timers},col sep=comma]{generic-runtime.csv};
+                \addplot[safe1,mark=triangle,thick] table [y={mean_runtime}, x={num_timers},col sep=comma]{harmonic-runtime.csv};
+
+            \end{axis}
+        \end{tikzpicture}
+        \subcaption{Mean runtime\label{fig:miqcp-runtime}}
+    \end{subfigure}
+    \caption{Completion rate in one hour and mean runtime of the MIQCP. \textcolor{red}{PLEASE NOTE: To reproduce the results from the paper accurately, the MIQCP needs to be solved on a comparable high-performance system as described in the paper. Since the remote access host is only a small desktop PC, the provided script only generates data for 1--4 timers.}}\label{fig:miqcp-stats}
+\end{figure}
+\end{document}

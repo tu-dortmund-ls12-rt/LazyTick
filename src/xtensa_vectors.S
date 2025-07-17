@@ -309,7 +309,7 @@
     #ifdef __XTENSA_CALL0_ABI__
     mov     a12, a6                         /* save in callee-saved reg */
     l32i    a2, a3, XIE_ARG                 /* a2 = handler arg */
-    callx0  a4                              /* call handler */
+    callx0  a4                              /*INFO call handler */
     mov     a2, a12
     #else
     mov     a2, a6                          /* save in windowed reg */
@@ -398,7 +398,7 @@ _xt_intexc_hooks:
     #endif
 
 
-/*
+/*INFO interrupt asm
 --------------------------------------------------------------------------------
   EXCEPTION AND LEVEL 1 INTERRUPT VECTORS AND LOW LEVEL HANDLERS
   (except window exception vectors).
@@ -837,6 +837,7 @@ _xt_user_exit:
     l32i    a0, sp, XT_STK_A0               /* retrieve interruptee's A0 */
     l32i    sp, sp, XT_STK_A1               /* remove interrupt stack frame */
     rsync                                   /* ensure PS and EPC written */
+    //INFO: here return to task
     rfe                                     /* PS.EXCM is cleared */
 
 
@@ -1200,6 +1201,7 @@ _xt_coproc_exc:
     .align      4
 
 _xt_lowint1:
+    //INFO start of hardware interrupt
     mov     a0, sp                          /* sp == a1 */
     addi    sp, sp, -XT_STK_FRMSZ           /* allocate interrupt stack frame */
     s32i    a0, sp, XT_STK_A1               /* save pre-interrupt SP */
@@ -1236,7 +1238,10 @@ _xt_lowint1:
     rsync
 
     /* OK to call C code at this point, dispatch user ISRs */
-
+//INFO here systick interrupt is called -- this is the first timepoint where C code can be called
+#ifdef BENCH_TP_ISR_ALL
+call4 save_timepoint_start
+#endif
     dispatch_c_isr 1 XCHAL_INTLEVEL1_MASK
 
     /* Done handling interrupts, transfer control to OS */
@@ -1325,7 +1330,9 @@ _xt_medint2:
     rsync
 
     /* OK to call C code at this point, dispatch user ISRs */
-
+#ifdef BENCH_TP_ISR_ALL
+call4 save_timepoint_start2
+#endif
     dispatch_c_isr 2 XCHAL_INTLEVEL2_MASK
 
     /* Done handling interrupts, transfer control to OS */
@@ -1405,7 +1412,9 @@ _xt_medint3:
     rsync
 
     /* OK to call C code at this point, dispatch user ISRs */
-
+#ifdef BENCH_TP_ISR_ALL
+call4 save_timepoint_start3
+#endif
     dispatch_c_isr 3 XCHAL_INTLEVEL3_MASK
 
     /* Done handling interrupts, transfer control to OS */
@@ -1484,7 +1493,9 @@ _xt_medint4:
     rsync
 
     /* OK to call C code at this point, dispatch user ISRs */
-
+#ifdef BENCH_TP_ISR_ALL
+call4 save_timepoint_start4
+#endif
     dispatch_c_isr 4 XCHAL_INTLEVEL4_MASK
 
     /* Done handling interrupts, transfer control to OS */
@@ -1563,7 +1574,9 @@ _xt_medint5:
     rsync
 
     /* OK to call C code at this point, dispatch user ISRs */
-
+#ifdef BENCH_TP_ISR_ALL
+call4 save_timepoint_start5
+#endif
     dispatch_c_isr 5 XCHAL_INTLEVEL5_MASK
 
     /* Done handling interrupts, transfer control to OS */
@@ -1642,7 +1655,9 @@ _xt_medint6:
     rsync
 
     /* OK to call C code at this point, dispatch user ISRs */
-
+#ifdef BENCH_TP_ISR_ALL
+call4 save_timepoint_start6
+#endif
     dispatch_c_isr 6 XCHAL_INTLEVEL6_MASK
 
     /* Done handling interrupts, transfer control to OS */

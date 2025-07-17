@@ -13,9 +13,9 @@ DEVICE = "/dev/ttyACM0"
 
 PROJECT_PATH = os.path.abspath(os.pardir)
 CMAKE_FILE = os.path.join(os.pardir, 'main', 'CMakeLists.txt')
-RESULTS_PATH = os.path.join('figures', 'results')
-LOGS_PATH = os.path.join('figures', 'results', 'logs')
-CSV_FILE = os.path.join('figures', 'results', 'logs', 'results.csv')
+RESULTS_PATH = os.path.join('figures', 'results-small')
+LOGS_PATH = os.path.join('figures', 'results-small', 'logs')
+CSV_FILE = os.path.join('figures', 'results-small', 'logs', 'results.csv')
 
 
 def gen_comp_flags(test_type: str = 'freertos', task_it=1, num_ticks=1000):
@@ -79,6 +79,7 @@ def copytds(tasksettype, pf, num_timer, num_tasks):
     shutil.copy(src=os.path.join(td_dir, f'taskDescriptions-t{num_tasks}-tim{num_timer}-p{pf}.h'), dst=TASK_DESC_H_DEST)
     shutil.copy(src=os.path.join(td_dir, f'taskDescriptions-t{num_tasks}-tim{num_timer}-p{pf}.c'), dst=TASK_DESC_C_DEST)
 
+
 def rebuild():
     cmd = (
         ". ./esp-idf/export.sh && "
@@ -96,6 +97,7 @@ def reset():
         f"esptool.py --chip esp32s3 --port {DEVICE} erase_flash"
     )
     subprocess.run(cmd, shell=True, cwd=PROJECT_PATH, check=True)
+
 
 def run_test(tasksettype, test_type, tasks, timers):
     pf = 1
@@ -126,6 +128,7 @@ def set_freertos_hz(tick: int):
     with open(sdkconfig, 'w') as file:
         file.writelines(lines)
 
+
 def enable_compiler_opt(opt: bool):
     sdkconfig = os.path.join(PROJECT_PATH, 'sdkconfig')
     with open(sdkconfig, 'r') as file:
@@ -144,6 +147,7 @@ def enable_compiler_opt(opt: bool):
 
     with open(sdkconfig, 'w') as file:
         file.writelines(lines)
+
 
 def extract(string, key, current_var, is_list, type=int):
     if key in string:
@@ -304,14 +308,14 @@ def evaluate_log(log_raw: List, taskset_type: str, suffix: str = ""):
 
 os.makedirs(LOGS_PATH, exist_ok=True)
 os.makedirs(RESULTS_PATH, exist_ok=True)
-set_freertos_hz(10)
-enable_compiler_opt(False)
 
+set_freertos_hz(1000)
+enable_compiler_opt(False)
 for test in ['lazytick', 'oneshot', 'freertos']:
     for taskset in ['harmonic', 'generic']:
         for tim in [1, 2, 3, 4]:
-            for tasks in range(50, 550, 50):
-                # 1000 ticks with 1tick=100ms => 100s per test
+            for tasks in range(10, 55, 5):
+                # 1000 ticks with 1tick=1ms => 1s per test
                 gen_comp_flags(test_type=test, task_it=1, num_ticks=1000)
                 run_test(tasksettype=taskset, test_type=test, tasks=tasks, timers=tim)
 

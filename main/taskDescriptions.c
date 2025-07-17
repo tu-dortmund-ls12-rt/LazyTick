@@ -1,4 +1,4 @@
 #include "freertos/taskDescriptions.h"
 const BaseType_t is_harmonic_timer[1] = {pdTRUE};
-const TickType_t timerPeriods[1] = {number_of_tasks};
-const TaskDescriptor_t td[number_of_tasks] = {{0,number_of_tasks,0,tick(1)},{0,number_of_tasks,1,tick(1)},{0,number_of_tasks,2,tick(1)},{0,number_of_tasks,3,tick(1)},{0,2*number_of_tasks,4,tick(2)-1500}};
+const TickType_t timerPeriods[1] = {5};
+const TaskDescriptor_t td[50] = {{0,5,0},{0,5,1},{0,5,2},{0,5,3},{0,5,4},{0,5,5},{0,5,6},{0,5,7},{0,5,8},{0,5,9},{0,10,10},{0,10,11},{0,10,12},{0,10,13},{0,10,14},{0,10,15},{0,10,16},{0,10,17},{0,10,18},{0,10,19},{0,10,20},{0,10,21},{0,10,22},{0,20,23},{0,20,24},{0,20,25},{0,20,26},{0,20,27},{0,20,28},{0,20,29},{0,20,30},{0,40,31},{0,40,32},{0,40,33},{0,40,34},{0,40,35},{0,80,36},{0,80,37},{0,80,38},{0,80,39},{0,80,40},{0,80,41},{0,80,42},{0,80,43},{0,80,44},{0,80,45},{0,80,46},{0,80,47},{0,80,48},{0,80,49}};

@@ -1,0 +1,64 @@
+\documentclass[varwidth=20cm]{standalone}
+\usepackage{siunitx}
+\usepackage{subcaption}
+
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{booktabs}
+\usepackage{makecell}
+
+\usetikzlibrary{positioning,chains,arrows,arrows.meta,shadows,fadings,shapes,backgrounds,matrix,patterns,plotmarks,trees,mindmap,automata,fit,calc,decorations.text}
+
+\pgfplotsset{compat=1.18,
+table/search path={./results/},
+    centered top legend/.style={
+            legend style={
+                    at={(0.5,1.2)},
+                    anchor=north,
+                    legend columns=3,
+                    fill=white,
+                    align=left,
+                    font=\footnotesize,
+                    minimum height=.42cm
+                }
+        },
+        /pgfplots/layers/stacklayers/.define layer set={
+        axis background,axis grid,main,axis ticks,axis lines,axis tick labels,
+        axis descriptions,axis foreground
+    }{/pgfplots/layers/standard},
+        hidden style/.style={
+            hide axis,
+            ybar stacked,
+            bar width=4pt,
+            ymin=0,
+            ymax=100000000,
+            axis x line*=bottom,
+            axis y line*=none,
+            width=\linewidth,
+            height=5cm,
+            xticklabels={},
+            set layers=stacklayers
+        },
+        visible style/.style={
+            ybar stacked,
+            bar width=4pt,
+            ymin=0,
+            ymax=100000000,
+            width=\linewidth,
+            height=5cm,
+            ymajorgrids=true,
+            yminorgrids=true,
+            xminorgrids=false,
+            xmajorgrids=true,
+            set layers=stacklayers,
+            xlabel={Number of tasks},
+            ylabel={Combined runtime},
+        },
+}
+\definecolor{safe0}{RGB}{217,95,2}
+\definecolor{safe2}{RGB}{27,158,119}
+\definecolor{safe1}{RGB}{117,112,179}
+
+\begin{document}
+\input{7.9-table.tex}
+\end{document}

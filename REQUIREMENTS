@@ -1,1 +1,5 @@
-TODO
+Linux host (tested with Debian 12.11 x86)
+Packages needed for esp-idf (https://docs.espressif.com/projects/esp-idf/en/v5.3.1/esp32/get-started/linux-macos-setup.html#for-linux-users):
+    git wget flex bison gperf python3 python3-pip python3-venv cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0
+python3 (tested with python 3.11.2)
+LaTeX to generate the figures from the csv data

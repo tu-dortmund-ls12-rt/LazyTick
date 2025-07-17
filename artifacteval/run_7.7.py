@@ -13,9 +13,9 @@ DEVICE = "/dev/ttyACM0"
 
 PROJECT_PATH = os.path.abspath(os.pardir)
 CMAKE_FILE = os.path.join(os.pardir, 'main', 'CMakeLists.txt')
-RESULTS_PATH = os.path.join('figures', 'results')
-LOGS_PATH = os.path.join('figures', 'results', 'logs')
-CSV_FILE = os.path.join('figures', 'results', 'logs', 'results.csv')
+RESULTS_PATH = os.path.join('figures', 'results-waters')
+LOGS_PATH = os.path.join('figures', 'results-waters', 'logs')
+CSV_FILE = os.path.join('figures', 'results-waters', 'logs', 'results.csv')
 
 
 def gen_comp_flags(test_type: str = 'freertos', task_it=1, num_ticks=1000):
@@ -308,7 +308,7 @@ set_freertos_hz(10)
 enable_compiler_opt(False)
 
 for test in ['lazytick', 'oneshot', 'freertos']:
-    for taskset in ['harmonic', 'generic']:
+    for taskset in ['waters']:
         for tim in [1, 2, 3, 4]:
             for tasks in range(50, 550, 50):
                 # 1000 ticks with 1tick=100ms => 100s per test
