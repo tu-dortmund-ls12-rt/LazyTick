@@ -13,3 +13,8 @@ artifacteval/figures/results*
 *.csv
 7.8-table.tex
 7.9-table.tex
+artifacteval/figures/*.aux
+artifacteval/figures/*.fdb_latexmk
+artifacteval/figures/*.fls
+artifacteval/figures/*.log
+artifacteval/figures/*.pdf
