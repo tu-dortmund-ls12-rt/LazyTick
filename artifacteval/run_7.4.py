@@ -3,7 +3,7 @@ import subprocess
 
 import pandas as pd
 
-NUM_TESTS = 99  # number of tests per timer count
+NUM_TESTS = 100  # number of tests per timer count
 
 PROJECT_PATH = os.path.abspath(os.pardir)
 HELPER_PATH = os.path.join(PROJECT_PATH, 'artifacteval', 'helperscripts')

@@ -9,13 +9,13 @@ typedef struct {
     UBaseType_t taskPos;
 } TaskDescriptor_t;
 
-#define number_of_timers 1
-#define number_of_tasks 50
-#define HYPERPERIOD 80
-#define NUM_INTERRUPTS 16
+#define number_of_timers 3
+#define number_of_tasks 200
+#define HYPERPERIOD 6160
+#define NUM_INTERRUPTS 2672
 #define PERIOD_FACTOR 1
 #define ONESHOT_INITIAL 5
-extern const BaseType_t is_harmonic_timer[1];
-extern const TickType_t timerPeriods[1];
-extern const TaskDescriptor_t td[50];
+extern const BaseType_t is_harmonic_timer[3];
+extern const TickType_t timerPeriods[3];
+extern const TaskDescriptor_t td[200];
 #endif

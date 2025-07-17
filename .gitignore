@@ -10,3 +10,6 @@ sdkconfig.old
 .vscode
 artifacteval/helperscripts/td-*
 artifacteval/figures/results*
+*.csv
+7.8-table.tex
+7.9-table.tex
