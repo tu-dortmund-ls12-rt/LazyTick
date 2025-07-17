@@ -3,7 +3,7 @@ This branch contains the code for reproducing the results our EMSOFT 2025 submis
 
 ## How to use the artifact
 To use the artifact and reproduce the evaluation results, the following steps have to be executed:
-1. download the artifact evaluation release from: ``
+1. download the artifact evaluation release from the DOI or clone the repository with `https://github.com/tu-dortmund-ls12-rt/LazyTick.git` and checkout the branch `artifacteval` with `git checkout artifacteval`
 2. install all software dependencies listed in the requirements section
 3. run the `local_setup.sh` script to install the esp-idf and apply the kernel modifications of LazyTick
 4. run the `run_all.sh` script in the `artifacteval` folder
