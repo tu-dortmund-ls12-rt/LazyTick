@@ -36,24 +36,11 @@ ilp, p, u = run_model(TIMERS, TASKS, H)
 ###### GENERATE OUTPUT ######
 
 if ilp.Status == GRB.INFEASIBLE:
-    # ilp.computeIIS()
-    # print('\nThe following constraints and variables are in the IIS:')
-    # for c in ilp.getConstrs():
-    #     if c.IISConstr:
-    #         print(f'\t{c.constrname}: {ilp.getRow(c)} {c.Sense} {c.RHS}')
-
-    # for v in ilp.getVars():
-    #     if v.IISLB:
-    #         print(f'\t{v.varname} ≥ {v.LB}')
-    #     if v.IISUB:
-    #         print(f'\t{v.varname} ≤ {v.UB}')
     raise Exception("Model is infeasible")
 
 if ilp.Status == GRB.OPTIMAL:
     # get task mappings
     mapping_task_timer = gen_task_timer_mapping(ilp, TASKS)
-
-    # timerPeriods = extract_timer_periods(p, u)
 
     # generate taskDescription File
     gen_td(mapping_task_timer, NUM_TASKS, TIMERS, PERIOD_FACTOR, RAND_FACTOR, OUTPUTFOLDER, CSVFILE, H, ilp, TASKS_BASE_PERIOD)

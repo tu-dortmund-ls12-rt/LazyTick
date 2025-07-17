@@ -122,9 +122,6 @@ def run_model(TIMERS: int, TASKS: list[int], H: int) -> Model:
     ilp.Params.MIPGapAbs = 0
     # ilp.Params.TimeLimit = 10*60
 
-    # https://or.stackexchange.com/questions/7293/how-to-linearize-the-product-of-two-integer-variables
-    # https://support.gurobi.com/hc/en-us/community/posts/14379942279057-Linearizing-product-of-two-integer-variables
-
     p = ilp.addVars(TIMERS, lb=1, ub=max(TASKS), vtype=GRB.INTEGER, name="p")
     u = ilp.addVars(TIMERS, vtype=GRB.BINARY, name="u")
     m = ilp.addVars(range(len(TASKS)), range(TIMERS), vtype=GRB.BINARY, name="m")
@@ -174,12 +171,6 @@ def gen_task_timer_mapping(ilp: Model, TASKS: list[int]) -> list[dict]:
             timer = int(timer)
             mapping_task_timer.append({'task': task, 'period': int(TASKS[task]), 'timer': timer})
     return mapping_task_timer
-
-
-# def extract_timer_periods(p: tupledict[int, Var], u: tupledict[int, Var]) -> list[tuple[str, int, bool]]:
-#     timerPeriods = [(i, int(p[i].X), bool(u[i].X)) for i in range(len(p))]
-#     print(f"Timer periods:\n{timerPeriods}")
-#     return timerPeriods
 
 
 def gen_td(mapping_task_timer: list[dict], NUM_TASKS: int, TIMERS: int, PERIOD_FACTOR: int, RAND_FACTOR: int, OUTPUTFOLDER: str, CSVFILE: str, H: int, ilp: Model, TASKS_BASE_PERIOD: list[int]) -> None:
@@ -260,8 +251,6 @@ for t in WATERS:
         if ilp.Status == GRB.OPTIMAL:
             # get task mappings
             mapping_task_timer = gen_task_timer_mapping(ilp, t)
-
-            # timerPeriods = extract_timer_periods(p, u)
 
             # generate taskDescription File
             gen_td(mapping_task_timer, len(t), timer, 1, 1, OUTPUTFOLDER, CSVFILE, h, ilp, [])
