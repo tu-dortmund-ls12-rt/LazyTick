@@ -9,6 +9,15 @@ To use the artifact and reproduce the evaluation results, the following steps ha
 4. run the `run_all.sh` script in the `artifacteval` folder
 5. after all experiments have finished, the figures with the replicated results can be found in `artifacteval/figures`. Each figure corresponds to the figure in the section of the same name.
 
+### Running experiments for each section separately
+The experiments for each section can be run separately by executing the corresponding python scripts in the `artifacteval` folder.
+
+In order to build the firmware for each experiment run, the task set obtained by solving MIQCP instance needs to exist in the folder `artifacteval/helperscripts`.
+To obtain the task sets, the MIQCP instances can be solved by running the script `artifacteval/helperscripts/solve_task_sets.sh`. A gurobi license is required for this.
+Alternatively, pre-solved task sets for 1-4 timers are available in the folder `artifacteval/helperscripts/pregenerated`. To use these instead of generating task sets from scratch, copy the contents of the folder to `artifacteval/helperscripts/`, e.g., run `cp -r artifacteval/helperscripts/pregenerated/* artifacteval/helperscripts/` from the root of the repository.
+
+As long as the data for the corresponding figure has been collected, each figure can be separately created by compiling the corresponding `.tex` file in the `artifacteval/figures` folder.
+
 ## Requirements
 The following software and hardware requirements need to be met in order to replicate the evaluation results.
 
