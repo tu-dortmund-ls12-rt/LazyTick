@@ -1,5 +1,6 @@
 import datetime
 import os
+import shutil
 import subprocess
 
 import serial
@@ -151,36 +152,36 @@ def run_test(test_type, tasks, timers):
         f.write(f'{test_type},{timers},{tasks},{success}\n')
 
 
-def set_freertos_hz(tick: int):
-    sdkconfig = os.path.join(PROJECT_PATH, 'sdkconfig')
-    with open(sdkconfig, 'r') as file:
-        lines = file.readlines()
-    for i, line in enumerate(lines):
-        if line.startswith('CONFIG_FREERTOS_HZ='):
-            lines[i] = f'CONFIG_FREERTOS_HZ={tick}\n'
-            break
-    with open(sdkconfig, 'w') as file:
-        file.writelines(lines)
+# def set_freertos_hz(tick: int):
+#     sdkconfig = os.path.join(PROJECT_PATH, 'sdkconfig')
+#     with open(sdkconfig, 'r') as file:
+#         lines = file.readlines()
+#     for i, line in enumerate(lines):
+#         if line.startswith('CONFIG_FREERTOS_HZ='):
+#             lines[i] = f'CONFIG_FREERTOS_HZ={tick}\n'
+#             break
+#     with open(sdkconfig, 'w') as file:
+#         file.writelines(lines)
 
 
-def enable_compiler_opt(opt: bool):
-    sdkconfig = os.path.join(PROJECT_PATH, 'sdkconfig')
-    with open(sdkconfig, 'r') as file:
-        lines = file.readlines()
-    for i, line in enumerate(lines):
-        if opt:
-            if line.startswith('CONFIG_COMPILER_OPTIMIZATION_PERF='):
-                lines[i] = 'CONFIG_COMPILER_OPTIMIZATION_PERF=y\n'
-            if line.startswith('CONFIG_COMPILER_OPTIMIZATION_NONE='):
-                lines[i] = '# CONFIG_COMPILER_OPTIMIZATION_NONE is not set\n'
-        else:
-            if line.startswith('CONFIG_COMPILER_OPTIMIZATION_PERF='):
-                lines[i] = '# CONFIG_COMPILER_OPTIMIZATION_PERF is not set\n'
-            if line.startswith('CONFIG_COMPILER_OPTIMIZATION_NONE='):
-                lines[i] = 'CONFIG_COMPILER_OPTIMIZATION_NONE=y\n'
+# def enable_compiler_opt(opt: bool):
+#     sdkconfig = os.path.join(PROJECT_PATH, 'sdkconfig')
+#     with open(sdkconfig, 'r') as file:
+#         lines = file.readlines()
+#     for i, line in enumerate(lines):
+#         if opt:
+#             if line.startswith('CONFIG_COMPILER_OPTIMIZATION_PERF='):
+#                 lines[i] = 'CONFIG_COMPILER_OPTIMIZATION_PERF=y\n'
+#             if line.startswith('CONFIG_COMPILER_OPTIMIZATION_NONE='):
+#                 lines[i] = '# CONFIG_COMPILER_OPTIMIZATION_NONE is not set\n'
+#         else:
+#             if line.startswith('CONFIG_COMPILER_OPTIMIZATION_PERF='):
+#                 lines[i] = '# CONFIG_COMPILER_OPTIMIZATION_PERF is not set\n'
+#             if line.startswith('CONFIG_COMPILER_OPTIMIZATION_NONE='):
+#                 lines[i] = 'CONFIG_COMPILER_OPTIMIZATION_NONE=y\n'
 
-    with open(sdkconfig, 'w') as file:
-        file.writelines(lines)
+#     with open(sdkconfig, 'w') as file:
+#         file.writelines(lines)
 
 
 os.makedirs(LOGS_PATH, exist_ok=True)
@@ -189,10 +190,10 @@ if not os.path.isfile(CSV_FILE):
     with open(CSV_FILE, 'w') as f:
         f.write('testtype,timers,tasks,schedulable\n')
 
+sdkconfig = os.path.join(PROJECT_PATH, 'sdkconfig.7.8')
+shutil.copy(sdkconfig, os.path.join(PROJECT_PATH, 'sdkconfig'))
 
 # config should be -O2, 10ms tick, and BENCH_INSERT, BENCH_TP_ISR_ALL disabled
-set_freertos_hz(100)
-enable_compiler_opt(True)
 for test in ['lazytick', 'oneshot', 'freertos']:
     for tim in [1]:
         for tasks in range(2, 21):
