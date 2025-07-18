@@ -10,12 +10,12 @@ typedef struct {
 } TaskDescriptor_t;
 
 #define number_of_timers 2
-#define number_of_tasks 15
-#define HYPERPERIOD 2100
-#define NUM_INTERRUPTS 720
+#define number_of_tasks 100
+#define HYPERPERIOD 1000
+#define NUM_INTERRUPTS 700
 #define PERIOD_FACTOR 1
-#define ONESHOT_INITIAL 5
+#define ONESHOT_INITIAL 2
 extern const BaseType_t is_harmonic_timer[2];
 extern const TickType_t timerPeriods[2];
-extern const TaskDescriptor_t td[15];
+extern const TaskDescriptor_t td[100];
 #endif

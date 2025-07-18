@@ -1,5 +1,5 @@
 # Install
-Whether the software and hardware environment is correctly setup can be check by running:
+Whether the software and hardware environment is correctly set up can be checked by running:
 1. `. ./esp-idf/export.sh` from the root of the repository to activate the `idf.py` commands.
 2. `idf.py build flash` to build and flash the firmware to the ESP32.
 3. `idf.py monitor` to display the UART output of the experiment run.
