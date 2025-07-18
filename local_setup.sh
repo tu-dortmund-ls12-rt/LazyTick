@@ -10,7 +10,7 @@ chmod +x install.sh
 . ./export.sh
 
 # install python packages in idf virtual environment
-pip install pandas numpy gurobipy pyserial jinja2
+pip install pandas==2.3.1 numpy==2.3.1 gurobipy==12.0.3 pyserial==3.5 Jinja2==3.1.6
 
 # setup lazytick kernel modification files
 rm -rf $thispath/esp-idf/components/freertos && \

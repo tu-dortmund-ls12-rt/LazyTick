@@ -1,5 +1,6 @@
 # LazyTick EMSOFT 2025 Artifact Evaluation
 This branch contains the code for reproducing the results our EMSOFT 2025 submission LazyTick.
+The artifact runs the experiments for every evaluation scenario of the paper and builds figures from the collected data in a similar style to the paper with LaTeX.
 
 ## How to use the artifact
 To use the artifact and reproduce the evaluation results, the following steps have to be executed:
