@@ -83,22 +83,12 @@ table/search path={./results-waters/},
                     width=190px,
                     height=180px,
                 ]
-                % harmonic
-                \addplot[safe0,mark=square] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_harmonic_\ntimer.csv};
-                \addlegendentry{FreeRTOS (harmonic)};
-                \addplot[safe1,mark=asterisk] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_harmonic_\ntimer.csv};
-                \addlegendentry{One-shot (harmonic)}
-                \addplot[safe2,mark=o] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_harmonic_\ntimer.csv};
-                \addlegendentry{\textit{LazyTick} (harmonic)};
-
-                % generic
-                \addplot[safe0,mark=square*] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_generic_\ntimer.csv};
+                \addplot[safe0,mark=square] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_waters_\ntimer.csv};
                 \addlegendentry{FreeRTOS};
-                \addplot[safe1,mark=10-pointed star] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_generic_\ntimer.csv};
+                \addplot[safe1,mark=asterisk] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_waters_\ntimer.csv};
                 \addlegendentry{One-shot}
-                \addplot[safe2,mark=oplus] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_generic_\ntimer.csv};
+                \addplot[safe2,mark=o] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_waters_\ntimer.csv};
                 \addlegendentry{\textit{LazyTick}};
-
             \end{axis}
         \end{tikzpicture}
         \subcaption{One timer\label{fig:insert-1-timer}}
@@ -116,73 +106,12 @@ table/search path={./results-waters/},
                     width=190px,
                     height=180px,
                 ]
-                % harmonic
-                \addplot[safe0,mark=square] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_harmonic_\ntimer.csv};
-                \addplot[safe1,mark=asterisk] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_harmonic_\ntimer.csv};
-                \addplot[safe2,mark=o] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_harmonic_\ntimer.csv};
-
-                % generic
-                \addplot[safe0,mark=square*] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_generic_\ntimer.csv};
-                \addplot[safe1,mark=10-pointed star] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_generic_\ntimer.csv};
-                \addplot[safe2,mark=oplus] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_generic_\ntimer.csv};
-
+                \addplot[safe0,mark=square] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_waters_\ntimer.csv};
+                \addplot[safe1,mark=asterisk] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_waters_\ntimer.csv};
+                \addplot[safe2,mark=o] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_waters_\ntimer.csv};
             \end{axis}
         \end{tikzpicture}
         \subcaption{Two timers\label{fig:insert-2-timer}}
-    \end{subfigure}\\%
-    \begin{subfigure}[b]{0.5\textwidth}%
-        \begin{tikzpicture}
-            \def\ntimer{3}
-            \begin{axis}[
-                    xlabel={Number of tasks},
-                    ylabel={Runtime variability},
-                    ymajorgrids=true,
-                    yminorgrids=true,
-                    xminorgrids=false,
-                    xmajorgrids=true,
-                    width=190px,
-                    height=180px,
-                ]
-                % harmonic
-                \addplot[safe0,mark=square] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_harmonic_\ntimer.csv};
-                \addplot[safe1,mark=asterisk] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_harmonic_\ntimer.csv};
-                \addplot[safe2,mark=o] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_harmonic_\ntimer.csv};
-
-                % generic
-                \addplot[safe0,mark=square*] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_generic_\ntimer.csv};
-                \addplot[safe1,mark=10-pointed star] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_generic_\ntimer.csv};
-                \addplot[safe2,mark=oplus] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_generic_\ntimer.csv};
-
-            \end{axis}
-        \end{tikzpicture}
-        \subcaption{Three timers\label{fig:insert-3-timer}}
-    \end{subfigure}\hfill%
-    \begin{subfigure}[b]{0.5\textwidth}%
-        \begin{tikzpicture}
-            \def\ntimer{4}
-            \begin{axis}[
-                    xlabel={Number of tasks},
-                    ylabel={Runtime variability},
-                    ymajorgrids=true,
-                    yminorgrids=true,
-                    xminorgrids=false,
-                    xmajorgrids=true,
-                    width=190px,
-                    height=180px,
-                ]
-                % harmonic
-                \addplot[safe0,mark=square] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_harmonic_\ntimer.csv};
-                \addplot[safe1,mark=asterisk] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_harmonic_\ntimer.csv};
-                \addplot[safe2,mark=o] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_harmonic_\ntimer.csv};
-
-                % generic
-                \addplot[safe0,mark=square*] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_generic_\ntimer.csv};
-                \addplot[safe1,mark=10-pointed star] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_generic_\ntimer.csv};
-                \addplot[safe2,mark=oplus] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_generic_\ntimer.csv};
-
-            \end{axis}
-        \end{tikzpicture}
-        \subcaption{Four timers\label{fig:insert-4-timer}}
     \end{subfigure}
     \caption{Insertion runtime variability measurements for WATERS benchmark (unit: clock cycles).}\label{fig:insert}
 \end{figure}
@@ -214,19 +143,11 @@ table/search path={./results-waters/},
                     height=180px,
                 ]
                 % harmonic
-                \addplot[safe0,mark=square] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_harmonic_\ntimer.csv};
-                \addlegendentry{FreeRTOS (harmonic)};
-                \addplot[safe1,mark=asterisk] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_harmonic_\ntimer.csv};
-                \addlegendentry{One-shot (harmonic)}
-                \addplot[safe2,mark=o] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_harmonic_\ntimer.csv};
-                \addlegendentry{\textit{LazyTick} (harmonic)};
-
-                % generic
-                \addplot[safe0,mark=square*] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_generic_\ntimer.csv};
+                \addplot[safe0,mark=square] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_waters_\ntimer.csv};
                 \addlegendentry{FreeRTOS};
-                \addplot[safe1,mark=10-pointed star] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_generic_\ntimer.csv};
+                \addplot[safe1,mark=asterisk] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_waters_\ntimer.csv};
                 \addlegendentry{One-shot}
-                \addplot[safe2,mark=oplus] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_generic_\ntimer.csv};
+                \addplot[safe2,mark=o] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_waters_\ntimer.csv};
                 \addlegendentry{\textit{LazyTick}};
 
             \end{axis}
@@ -247,74 +168,12 @@ table/search path={./results-waters/},
                     height=180px,
                 ]
                 % harmonic
-                \addplot[safe0,mark=square] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_harmonic_\ntimer.csv};
-                \addplot[safe1,mark=asterisk] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_harmonic_\ntimer.csv};
-                \addplot[safe2,mark=o] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_harmonic_\ntimer.csv};
-
-                % generic
-                \addplot[safe0,mark=square*] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_generic_\ntimer.csv};
-                \addplot[safe1,mark=10-pointed star] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_generic_\ntimer.csv};
-                \addplot[safe2,mark=oplus] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_generic_\ntimer.csv};
-
+                \addplot[safe0,mark=square] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_waters_\ntimer.csv};
+                \addplot[safe1,mark=asterisk] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_waters_\ntimer.csv};
+                \addplot[safe2,mark=o] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_waters_\ntimer.csv};
             \end{axis}
         \end{tikzpicture}
         \subcaption{Two timers\label{fig:retrieval-2-timer}}
-    \end{subfigure}\\%
-    \begin{subfigure}[b]{0.5\textwidth}%
-        \begin{tikzpicture}
-            \def\ntimer{3}
-            \begin{axis}[
-                    xlabel={Number of tasks},
-                    ylabel={Runtime variability},
-                    ymajorgrids=true,
-                    yminorgrids=true,
-                    xminorgrids=false,
-                    xmajorgrids=true,
-                    width=190px,
-                    height=180px,
-                    yticklabel = {\hphantom{0.}$\pgfmathprintnumber{\tick}$},
-                ]
-                % harmonic
-                \addplot[safe0,mark=square] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_harmonic_\ntimer.csv};
-                \addplot[safe1,mark=asterisk] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_harmonic_\ntimer.csv};
-                \addplot[safe2,mark=o] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_harmonic_\ntimer.csv};
-
-                % generic
-                \addplot[safe0,mark=square*] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_generic_\ntimer.csv};
-                \addplot[safe1,mark=10-pointed star] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_generic_\ntimer.csv};
-                \addplot[safe2,mark=oplus] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_generic_\ntimer.csv};
-
-            \end{axis}
-        \end{tikzpicture}
-        \subcaption{Three timers\label{fig:retrieval-3-timer}}
-    \end{subfigure}\hfill%
-    \begin{subfigure}[b]{0.5\textwidth}%
-        \begin{tikzpicture}
-            \def\ntimer{4}
-            \begin{axis}[
-                    xlabel={Number of tasks},
-                    ylabel={Runtime variability},
-                    ymajorgrids=true,
-                    yminorgrids=true,
-                    xminorgrids=false,
-                    xmajorgrids=true,
-                    width=190px,
-                    height=180px,
-                    yticklabel = {\hphantom{0.}$\pgfmathprintnumber{\tick}$},
-                ]
-                % harmonic
-                \addplot[safe0,mark=square] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_harmonic_\ntimer.csv};
-                \addplot[safe1,mark=asterisk] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_harmonic_\ntimer.csv};
-                \addplot[safe2,mark=o] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_harmonic_\ntimer.csv};
-
-                % generic
-                \addplot[safe0,mark=square*] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_generic_\ntimer.csv};
-                \addplot[safe1,mark=10-pointed star] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_generic_\ntimer.csv};
-                \addplot[safe2,mark=oplus] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_generic_\ntimer.csv};
-
-            \end{axis}
-        \end{tikzpicture}
-        \subcaption{Four timers\label{fig:retrieval-4-timer}}
     \end{subfigure}
     \caption{Retrieval runtime variability measurements for WATERS benchmark (unit: clock cycles).}\label{fig:retrieval}
 \end{figure}
@@ -324,8 +183,7 @@ table/search path={./results-waters/},
 \begin{figure}
     \def\yaxis{insert_sum}
     \def\yaxisb{runtime_isr}
-    \def\ntimer{4}
-    \begin{subfigure}{\linewidth}%
+    \def\ntimer{2}
         \begin{tikzpicture}
 
             \node[draw,fill=white,align=center,font=\footnotesize,minimum height=.42cm] at (6,4.25){
@@ -339,64 +197,29 @@ table/search path={./results-waters/},
                     bar shift=-6pt,
                     hidden style
                 ]
-                \addplot[safe0,fill=safe0] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_harmonic_\ntimer.csv};
+                \addplot[safe0,fill=safe0] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_waters_\ntimer.csv};
                 \label{combined-1timer-freertos-harmonic-insert}
-                \addplot[safe0] table [y={\yaxisb}, x={num_tasks},col sep=comma]{freertos_harmonic_\ntimer.csv};
+                \addplot[safe0] table [y={\yaxisb}, x={num_tasks},col sep=comma]{freertos_waters_\ntimer.csv};
                 \label{combined-1timer-freertos-harmonic-isr}
             \end{axis}
             \begin{axis}[bar shift=0pt,
                     hidden style
                 ]
-                \addplot[safe1,fill=safe1] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_harmonic_\ntimer.csv};
+                \addplot[safe1,fill=safe1] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_waters_\ntimer.csv};
                 \label{combined-1timer-oneshot-harmonic-insert}
-                \addplot[safe1] table [y={\yaxisb}, x={num_tasks},col sep=comma]{oneshot_harmonic_\ntimer.csv};
+                \addplot[safe1] table [y={\yaxisb}, x={num_tasks},col sep=comma]{oneshot_waters_\ntimer.csv};
                 \label{combined-1timer-oneshot-harmonic-isr}
             \end{axis}
             \begin{axis}[bar shift=6pt,
                     visible style
                 ]
-                \addplot[safe2,fill=safe2] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_harmonic_\ntimer.csv};
+                \addplot[safe2,fill=safe2] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_waters_\ntimer.csv};
                 \label{combined-1timer-lazytick-harmonic-insert}
-                \addplot[safe2] table [y={\yaxisb}, x={num_tasks},col sep=comma]{lazytick_harmonic_\ntimer.csv};
+                \addplot[safe2] table [y={\yaxisb}, x={num_tasks},col sep=comma]{lazytick_waters_\ntimer.csv};
                 \label{combined-1timer-lazytick-harmonic-isr}
             \end{axis}
         \end{tikzpicture}
-        \subcaption{Harmonic task sets\label{fig:combined-harmonic}}
-    \end{subfigure}\\%
-    \begin{subfigure}{\linewidth}%
-        \begin{tikzpicture}
-            \begin{axis}[
-                    bar shift=-6pt,
-                    hidden style,
-                    ymax=150000000,
-                ]
-                \addplot[safe0,fill=safe0] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_generic_\ntimer.csv};
-                \label{combined-1timer-freertos-generic-insert}
-                \addplot[safe0] table [y={\yaxisb}, x={num_tasks},col sep=comma]{freertos_generic_\ntimer.csv};
-                \label{combined-1timer-freertos-generic-isr}
-            \end{axis}
-            \begin{axis}[bar shift=0pt,
-                    hidden style,
-                    ymax=150000000,
-                ]
-                \addplot[safe1,fill=safe1] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_generic_\ntimer.csv};
-                \label{combined-1timer-oneshot-generic-insert}
-                \addplot[safe1] table [y={\yaxisb}, x={num_tasks},col sep=comma]{oneshot_generic_\ntimer.csv};
-                \label{combined-1timer-oneshot-generic-isr}
-            \end{axis}
-            \begin{axis}[bar shift=6pt,
-                    visible style,
-                    ymax=150000000,
-                ]
-                \addplot[safe2,fill=safe2] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_generic_\ntimer.csv};
-                \label{combined-1timer-lazytick-generic-insert}
-                \addplot[safe2] table [y={\yaxisb}, x={num_tasks},col sep=comma]{lazytick_generic_\ntimer.csv};
-                \label{combined-1timer-lazytick-generic-isr}
-            \end{axis}
-        \end{tikzpicture}
-        \subcaption{Non-harmonic task sets\label{fig:combined-generic}}
-    \end{subfigure}
-    \caption{Combined overhead for four timers for WATERS benchmark (unit: clock cycles).}\label{fig:combined}
+    \caption{Combined overhead for two timers for WATERS benchmark (unit: clock cycles).}\label{fig:combined}
 \end{figure}
 
 \end{document}

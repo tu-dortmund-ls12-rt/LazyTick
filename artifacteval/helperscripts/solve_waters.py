@@ -238,7 +238,7 @@ if not os.path.exists(OUTPUTFOLDER):
 CSVFILE = os.path.join(OUTPUTFOLDER, "miqcp-eval-waters.csv")
 
 for t in WATERS:
-    for timer in [1, 2, 3, 4]:
+    for timer in [1, 2]:
         h = int(lcm.reduce(t))
 
         ilp, p, u = run_model(timer, t, h)

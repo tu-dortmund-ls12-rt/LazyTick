@@ -304,12 +304,12 @@ def evaluate_log(log_raw: List, taskset_type: str, suffix: str = ""):
 
 os.makedirs(LOGS_PATH, exist_ok=True)
 os.makedirs(RESULTS_PATH, exist_ok=True)
-set_freertos_hz(10)
-enable_compiler_opt(False)
+sdkconfig = os.path.join(PROJECT_PATH, 'sdkconfig.7.5')
+shutil.copy(sdkconfig, os.path.join(PROJECT_PATH, 'sdkconfig'))
 
 for test in ['lazytick', 'oneshot', 'freertos']:
     for taskset in ['waters']:
-        for tim in [1, 2, 3, 4]:
+        for tim in [1, 2]:
             for tasks in range(50, 550, 50):
                 # 1000 ticks with 1tick=100ms => 100s per test
                 gen_comp_flags(test_type=test, task_it=1, num_ticks=1000)
