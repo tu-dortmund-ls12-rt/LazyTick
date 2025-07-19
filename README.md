@@ -91,7 +91,7 @@ The following Sections give some notes on the MIQCP runtime experiments and how 
 
 ### Notes on MIQCP runtime experiments
 The runtime results of the MIQCP experiments are dependent on the hardware where Gurobi runs on.
-The task sets with 1-4 timers can be solved in little time even on a desktop class computer. In order to replicate the results for 5-8 timers, a high-performance server system is needed.
+The task sets with 1-4 timers can be solved in around two hours even on our desktop class computer. In order to replicate the results for 5-8 timers, a high-performance server system is needed.
 For this reason, we have configured the script to only solve the MIQCP instances for 1-4 timers. However, this is configurable in the script `artifacteval/helperscripts/solve_task_sets.sh`. The range of timers for which the MIQCP instances are solved can be configured with the loop bounds in line 2.
 
 
