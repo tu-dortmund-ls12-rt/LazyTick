@@ -1,1 +1,1 @@
-We apply for the ARTIFACTS AVAILABLE and RESULTS VALIDATED – REPRODUCED badges, as this repository contains the code and scripts used to obtain the evaluation data of our submission and the artifact is available with the DOI: .
+We apply for the ARTIFACTS AVAILABLE and RESULTS VALIDATED – REPRODUCED badges, as this repository contains the code and scripts used to obtain the evaluation data of our submission and the artifact is available with the DOI: https://doi.org/10.5281/zenodo.16162862
