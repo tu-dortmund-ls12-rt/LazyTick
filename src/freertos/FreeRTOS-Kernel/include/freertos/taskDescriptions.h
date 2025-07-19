@@ -7,15 +7,18 @@ typedef struct {
     UBaseType_t timer;
     TickType_t period;
     UBaseType_t taskPos;
+    TickType_t executionTime;
 } TaskDescriptor_t;
 
-#define number_of_timers 4
-#define number_of_tasks 50
-#define HYPERPERIOD 300300
-#define NUM_INTERRUPTS 153360
+#define tick(i) (i*159999U)
+
+#define number_of_timers 1
+#define number_of_tasks 3
+#define HYPERPERIOD (2*number_of_tasks)
+#define NUM_INTERRUPTS 60
 #define PERIOD_FACTOR 1
-#define ONESHOT_INITIAL 5
-extern const BaseType_t is_harmonic_timer[4];
-extern const TickType_t timerPeriods[4];
-extern const TaskDescriptor_t td[50];
+#define ONESHOT_INITIAL number_of_tasks
+extern const BaseType_t is_harmonic_timer[1];
+extern const TickType_t timerPeriods[1];
+extern const TaskDescriptor_t td[number_of_tasks];
 #endif
