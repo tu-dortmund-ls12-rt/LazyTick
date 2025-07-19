@@ -1,3 +1,4 @@
+[![DOI](https://zenodo.org/badge/1019522721.svg)](https://doi.org/10.5281/zenodo.16162861)
 # LazyTick EMSOFT 2025 Artifact Evaluation
 
 This repository is used to reproduce the evaluation results from our EMSOFT 2025 submission
@@ -59,7 +60,7 @@ All evaluation files regarding the artifact evaluation are found in the artifact
 
 ## How to deploy
 
-1. Clone the git repository or download the [zip file](https://github.com/tu-dortmund-ls12-rt/LazyTick/archive/refs/heads/artifacteval.zip):
+1. Clone the git repository or download the [zip file](https://zenodo.org/records/16162862/files/tu-dortmund-ls12-rt/LazyTick-emsoft-artifacteval.zip?download=1):
     ```
     https://github.com/tu-dortmund-ls12-rt/LazyTick.git
     ```
