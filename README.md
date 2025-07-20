@@ -42,7 +42,7 @@ The following hardware is required to replicate the results:
 - High-performance server to replicate the MIQCP runtime results (we used a server with 2 AMD EPYC 9654 CPUs and 768 GB of RAM in our evaluation)
 
 ## File Structure
-All evaluation files regarding the artifact evaluation are found in the artifacteval folder.
+All evaluation files regarding the artifact evaluation are found in the `artifacteval` folder.
 
     .
     ├── artifacteval            # Artifact evaluation files
@@ -92,9 +92,11 @@ The following Sections give some notes on the MIQCP runtime experiments and how 
 
 ### Notes on MIQCP runtime experiments
 The runtime results of the MIQCP experiments are dependent on the hardware where Gurobi runs on.
-The task sets with 1-4 timers can be solved in around two hours even on our desktop class computer. In order to replicate the results for 5-8 timers, a high-performance server system is needed.
+The task sets with 1-4 timers can be solved in around two hours on our desktop class computer. In order to replicate the results for 5-8 timers, a high-performance server system is needed to replicate the results of the paper.
 For this reason, we have configured the script to only solve the MIQCP instances for 1-4 timers. However, this is configurable in the script `artifacteval/helperscripts/solve_task_sets.sh`. The range of timers for which the MIQCP instances are solved can be configured with the loop bounds in line 2.
 
+### Notes on the data presentation
+After collecting the data points, we do not perform any cleanup of potential outliers. The figures and summary tables represent the raw data. Therefore, minuscule differences to the figures and numbers of the paper can occur. However, the trends and relative observations stay the same while the absolute differences are minimal.
 
 ### Install
 Whether the software and hardware environment is correctly set up can be checked by running:
