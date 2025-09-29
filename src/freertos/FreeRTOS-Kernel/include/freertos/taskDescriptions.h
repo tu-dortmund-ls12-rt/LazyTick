@@ -13,7 +13,7 @@ typedef struct {
 #define tick(i) (i*159999U)
 
 #define number_of_timers 1
-#define number_of_tasks 5
+#define number_of_tasks 3
 #define HYPERPERIOD (2*number_of_tasks)
 #define NUM_INTERRUPTS 60
 #define PERIOD_FACTOR 1

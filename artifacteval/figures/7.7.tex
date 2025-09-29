@@ -1,0 +1,225 @@
+\documentclass[varwidth=20cm]{standalone}
+\usepackage{siunitx}
+\usepackage{subcaption}
+
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+\usetikzlibrary{positioning,chains,arrows,arrows.meta,shadows,fadings,shapes,backgrounds,matrix,patterns,plotmarks,trees,mindmap,automata,fit,calc,decorations.text}
+
+\pgfplotsset{compat=1.18,
+table/search path={./results-waters/},
+    centered top legend/.style={
+            legend style={
+                    at={(0.5,1.2)},
+                    anchor=north,
+                    legend columns=3,
+                    fill=white,
+                    align=left,
+                    font=\footnotesize,
+                    minimum height=.42cm
+                }
+        },
+        /pgfplots/layers/stacklayers/.define layer set={
+        axis background,axis grid,main,axis ticks,axis lines,axis tick labels,
+        axis descriptions,axis foreground
+    }{/pgfplots/layers/standard},
+        hidden style/.style={
+            hide axis,
+            ybar stacked,
+            bar width=4pt,
+            ymin=0,
+            ymax=100000000,
+            axis x line*=bottom,
+            axis y line*=none,
+            width=\linewidth,
+            height=5cm,
+            xticklabels={},
+            set layers=stacklayers
+        },
+        visible style/.style={
+            ybar stacked,
+            bar width=4pt,
+            ymin=0,
+            ymax=100000000,
+            width=\linewidth,
+            height=5cm,
+            ymajorgrids=true,
+            yminorgrids=true,
+            xminorgrids=false,
+            xmajorgrids=true,
+            set layers=stacklayers,
+            xlabel={Number of tasks},
+            ylabel={Combined runtime},
+        },
+}
+\definecolor{safe0}{RGB}{217,95,2}
+\definecolor{safe2}{RGB}{27,158,119}
+\definecolor{safe1}{RGB}{117,112,179}
+
+\begin{document}
+\section*{Insertion}
+\begin{figure}
+    \def\yaxis{insert_span}
+    \begin{subfigure}[b]{0.5\textwidth}%
+        \begin{tikzpicture}
+            \def\ntimer{1}
+            \begin{axis}[
+                    xlabel={Number of tasks},
+                    ylabel={Runtime variability},
+                    ymajorgrids=true,
+                    yminorgrids=true,
+                    xminorgrids=false,
+                    xmajorgrids=true,
+                    legend style={
+                            at={(1.15,1.3)},
+                            anchor=north,
+                            legend columns=3,
+                            fill=white,
+                            align=left,
+                            font=\footnotesize,
+                            minimum height=.42cm
+                        },
+                    width=190px,
+                    height=180px,
+                ]
+                \addplot[safe0,mark=square] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_waters_\ntimer.csv};
+                \addlegendentry{FreeRTOS};
+                \addplot[safe1,mark=asterisk] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_waters_\ntimer.csv};
+                \addlegendentry{One-shot}
+                \addplot[safe2,mark=o] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_waters_\ntimer.csv};
+                \addlegendentry{\textit{LazyTick}};
+            \end{axis}
+        \end{tikzpicture}
+        \subcaption{One timer\label{fig:insert-1-timer}}
+    \end{subfigure}\hfill%
+    \begin{subfigure}[b]{0.5\textwidth}%
+        \begin{tikzpicture}
+            \def\ntimer{2}
+            \begin{axis}[
+                    xlabel={Number of tasks},
+                    ylabel={Runtime variability},
+                    ymajorgrids=true,
+                    yminorgrids=true,
+                    xminorgrids=false,
+                    xmajorgrids=true,
+                    width=190px,
+                    height=180px,
+                ]
+                \addplot[safe0,mark=square] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_waters_\ntimer.csv};
+                \addplot[safe1,mark=asterisk] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_waters_\ntimer.csv};
+                \addplot[safe2,mark=o] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_waters_\ntimer.csv};
+            \end{axis}
+        \end{tikzpicture}
+        \subcaption{Two timers\label{fig:insert-2-timer}}
+    \end{subfigure}
+    \caption{Insertion runtime variability measurements for WATERS benchmark (unit: clock cycles).}\label{fig:insert}
+\end{figure}
+
+\section*{Retrieval}
+
+\begin{figure}
+    \def\yaxis{retrieval_span}
+    \begin{subfigure}[b]{0.5\textwidth}%
+        \begin{tikzpicture}
+            \def\ntimer{1}
+            \begin{axis}[
+                    xlabel={Number of tasks},
+                    ylabel={Runtime variability},
+                    ymajorgrids=true,
+                    yminorgrids=true,
+                    xminorgrids=false,
+                    xmajorgrids=true,
+                    legend style={
+                            at={(1.15,1.35)},
+                            anchor=north,
+                            legend columns=3,
+                            fill=white,
+                            align=left,
+                            font=\footnotesize,
+                            minimum height=.42cm
+                        },
+                    width=190px,
+                    height=180px,
+                ]
+                % harmonic
+                \addplot[safe0,mark=square] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_waters_\ntimer.csv};
+                \addlegendentry{FreeRTOS};
+                \addplot[safe1,mark=asterisk] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_waters_\ntimer.csv};
+                \addlegendentry{One-shot}
+                \addplot[safe2,mark=o] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_waters_\ntimer.csv};
+                \addlegendentry{\textit{LazyTick}};
+
+            \end{axis}
+        \end{tikzpicture}
+        \subcaption{One timer\label{fig:retrieval-1-timer}}
+    \end{subfigure}\hfill%
+    \begin{subfigure}[b]{0.5\textwidth}%
+        \begin{tikzpicture}
+            \def\ntimer{2}
+            \begin{axis}[
+                    xlabel={Number of tasks},
+                    ylabel={Runtime variability},
+                    ymajorgrids=true,
+                    yminorgrids=true,
+                    xminorgrids=false,
+                    xmajorgrids=true,
+                    width=190px,
+                    height=180px,
+                ]
+                % harmonic
+                \addplot[safe0,mark=square] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_waters_\ntimer.csv};
+                \addplot[safe1,mark=asterisk] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_waters_\ntimer.csv};
+                \addplot[safe2,mark=o] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_waters_\ntimer.csv};
+            \end{axis}
+        \end{tikzpicture}
+        \subcaption{Two timers\label{fig:retrieval-2-timer}}
+    \end{subfigure}
+    \caption{Retrieval runtime variability measurements for WATERS benchmark (unit: clock cycles).}\label{fig:retrieval}
+\end{figure}
+
+\section*{Overhead}
+
+\begin{figure}
+    \def\yaxis{insert_sum}
+    \def\yaxisb{runtime_isr}
+    \def\ntimer{2}
+        \begin{tikzpicture}
+
+            \node[draw,fill=white,align=center,font=\footnotesize,minimum height=.42cm] at (6,4.25){
+                \begin{tabular}{lll}
+                    \ref*{combined-1timer-freertos-harmonic-isr}~FreeRTOS ISR          & \ref*{combined-1timer-oneshot-harmonic-isr}~One-shot ISR          & \ref*{combined-1timer-lazytick-harmonic-isr}~\textit{LazyTick} ISR          \\
+                    \ref*{combined-1timer-freertos-harmonic-insert}~FreeRTOS Insertion & \ref*{combined-1timer-oneshot-harmonic-insert}~One-shot Insertion & \ref*{combined-1timer-lazytick-harmonic-insert}~\textit{LazyTick} Insertion
+                \end{tabular}
+            };
+
+            \begin{axis}[
+                    bar shift=-6pt,
+                    hidden style
+                ]
+                \addplot[safe0,fill=safe0] table [y={\yaxis}, x={num_tasks},col sep=comma]{freertos_waters_\ntimer.csv};
+                \label{combined-1timer-freertos-harmonic-insert}
+                \addplot[safe0] table [y={\yaxisb}, x={num_tasks},col sep=comma]{freertos_waters_\ntimer.csv};
+                \label{combined-1timer-freertos-harmonic-isr}
+            \end{axis}
+            \begin{axis}[bar shift=0pt,
+                    hidden style
+                ]
+                \addplot[safe1,fill=safe1] table [y={\yaxis}, x={num_tasks},col sep=comma]{oneshot_waters_\ntimer.csv};
+                \label{combined-1timer-oneshot-harmonic-insert}
+                \addplot[safe1] table [y={\yaxisb}, x={num_tasks},col sep=comma]{oneshot_waters_\ntimer.csv};
+                \label{combined-1timer-oneshot-harmonic-isr}
+            \end{axis}
+            \begin{axis}[bar shift=6pt,
+                    visible style
+                ]
+                \addplot[safe2,fill=safe2] table [y={\yaxis}, x={num_tasks},col sep=comma]{lazytick_waters_\ntimer.csv};
+                \label{combined-1timer-lazytick-harmonic-insert}
+                \addplot[safe2] table [y={\yaxisb}, x={num_tasks},col sep=comma]{lazytick_waters_\ntimer.csv};
+                \label{combined-1timer-lazytick-harmonic-isr}
+            \end{axis}
+        \end{tikzpicture}
+    \caption{Combined overhead for two timers for WATERS benchmark (unit: clock cycles).}\label{fig:combined}
+\end{figure}
+
+\end{document}

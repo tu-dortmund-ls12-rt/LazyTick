@@ -9,14 +9,21 @@ chmod +x install.sh
 ./install.sh esp32s3
 . ./export.sh
 
-cp -r $thispath/esp-idf/components/freertos $thispath/src/freertos && \
+# install python packages in idf virtual environment
+pip install pandas==2.3.1 numpy==2.3.1 gurobipy==12.0.3 pyserial==3.5 Jinja2==3.1.6
+
+# setup lazytick kernel modification files
 rm -rf $thispath/esp-idf/components/freertos && \
 ln -s $thispath/src/freertos $thispath/esp-idf/components/freertos
 
-cp $thispath/esp-idf/components/xtensa/xtensa_vectors.S $thispath/src/xtensa_vectors.S && \
 rm $thispath/esp-idf/components/xtensa/xtensa_vectors.S && \
 ln -s $thispath/src/xtensa_vectors.S $thispath/esp-idf/components/xtensa/xtensa_vectors.S
 
-cp $thispath/esp-idf/components/esp_hw_support/intr_alloc.c $thispath/src/intr_alloc.c && \
 rm $thispath/esp-idf/components/esp_hw_support/intr_alloc.c && \
 ln -s $thispath/src/intr_alloc.c $thispath/esp-idf/components/esp_hw_support/intr_alloc.c
+
+rm $thispath/esp-idf/components/pthread/pthread.c && \
+ln -s $thispath/src/pthread.c $thispath/esp-idf/components/pthread/pthread.c
+
+rm $thispath/esp-idf/components/esp_timer/src/esp_timer.c && \
+ln -s $thispath/src/esp_timer.c $thispath/esp-idf/components/esp_timer/src/esp_timer.c

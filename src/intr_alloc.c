@@ -533,6 +533,25 @@ esp_err_t esp_intr_alloc_intrstatus(int source, int flags, uint32_t intrstatusre
     if (source == ETS_INTERNAL_PROFILING_INTR_SOURCE) {
         force = ETS_INTERNAL_PROFILING_INTR_NO;
     }
+    // INFO force timer intr source numbers
+    if (source == ETS_FROM_CPU_INTR0_SOURCE) {
+        force = ETS_FROM_CPU_INTR0_SOURCE_NO;
+    }
+    if (source == SYSTICK_INTR_ID) {
+        force = ETS_SYSTIMER_TARGET0_INTR_SOURCE_NO;
+    }
+    if (source == ETS_TG0_T0_LEVEL_INTR_SOURCE) {
+        force = ETS_TG0_T0_LEVEL_INTR_SOURCE_NO;
+    }
+    if (source == ETS_TG0_T1_LEVEL_INTR_SOURCE) {
+        force = ETS_TG0_T1_LEVEL_INTR_SOURCE_NO;
+    }
+    if (source == ETS_TG1_T0_LEVEL_INTR_SOURCE) {
+        force = ETS_TG1_T0_LEVEL_INTR_SOURCE_NO;
+    }
+    if (source == ETS_TG1_T1_LEVEL_INTR_SOURCE) {
+        force = ETS_TG1_T1_LEVEL_INTR_SOURCE_NO;
+    }
 
     //Allocate a return handle. If we end up not needing it, we'll free it later on.
     ret = heap_caps_malloc(sizeof(intr_handle_data_t), MALLOC_CAP_INTERNAL | MALLOC_CAP_8BIT);
